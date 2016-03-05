@@ -1,0 +1,46 @@
+{
+  "name": "UserReview",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "rating": {
+      "type": "number",
+      "required": true
+    },
+    "comment": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "archived": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "from": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "fromId"
+    },
+    "to": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "toId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

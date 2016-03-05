@@ -3,7 +3,6 @@
     "loopback#favicon": {}
   },
   "initial": {
-    "compression": {},
     "cors": {
       "params": {
         "origin": true,
@@ -12,18 +11,31 @@
       }
     }
   },
-  "session": {
-  },
-  "auth": {
-  },
-  "parse": {
-  },
+  "session": {},
+  "auth": {},
+  "parse": {},
   "routes": {
     "loopback#rest": {
-      "paths": ["${restApiRoot}"]
+      "paths": [
+        "${restApiRoot}"
+      ]
     }
   },
   "files": {
+    "loopback#static": [
+      {
+        "paths": [
+          "/"
+        ],
+        "params": "$!../client/public"
+      },
+      {
+        "paths": [
+          "/admin"
+        ],
+        "params": "$!../client/admin"
+      }
+    ]
   },
   "final": {
     "loopback#urlNotFound": {}

@@ -1,24 +1,55 @@
 {
   "_meta": {
     "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
-      "../common/models",
+      "../node_modules/loopback-component-passport/lib/models",
       "./models"
     ],
     "mixins": [
-      "loopback/common/mixins",
-      "loopback/server/mixins",
-      "../common/mixins",
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db"
-  },
-  "AccessToken": {
+  "application": {
     "dataSource": "db",
-    "public": false
+    "public": true
+  },
+  "installation": {
+    "dataSource": "db",
+    "public": true
+  },
+  "notification": {
+    "dataSource": "db",
+    "public": true
+  },
+  "push": {
+    "dataSource": "push",
+    "public": true
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "UserMessage": {
+    "dataSource": "db",
+    "public": true
+  },
+  "UserReview": {
+    "dataSource": "db",
+    "public": true
+  },
+  "accessToken": {
+    "dataSource": "db",
+    "public": true
+  },
+  "userCredential": {
+    "dataSource": "db",
+    "public": true
+  },
+  "userIdentity": {
+    "dataSource": "db",
+    "public": true
   },
   "ACL": {
     "dataSource": "db",
@@ -26,10 +57,26 @@
   },
   "RoleMapping": {
     "dataSource": "db",
-    "public": false
+    "public": true
   },
   "Role": {
     "dataSource": "db",
+    "public": true
+  },
+  "AppModel": {
+    "dataSource": "db",
     "public": false
+  },
+  "Post": {
+    "dataSource": "db",
+    "public": true
+  },
+  "PostCategory": {
+    "dataSource": "db",
+    "public": true
+  },
+  "container": {
+    "dataSource": "storage",
+    "public": true
   }
 }

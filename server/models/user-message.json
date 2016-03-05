@@ -1,0 +1,55 @@
+{
+  "name": "UserMessage",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "from": {
+      "type": "string",
+      "required": true
+    },
+    "to": {
+      "type": "string",
+      "required": true
+    },
+    "read": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "archived": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "from": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "fromId"
+    },
+    "to": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "toId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

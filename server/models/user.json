@@ -1,0 +1,132 @@
+{
+  "name": "user",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "mixins": {
+    "Paginate": {
+      "config": {
+        "limit": "10"
+      }
+    }
+  },
+  "properties": {
+    "address_city": {
+      "type": "string"
+    },
+    "address_country": {
+      "type": "string"
+    },
+    "address_line1": {
+      "type": "string"
+    },
+    "address_line1_check": {
+      "type": "string"
+    },
+    "address_line2": {
+      "type": "string"
+    },
+    "address_state": {
+      "type": "string"
+    },
+    "address_zip": {
+      "type": "string"
+    },
+    "address_zip_check": {
+      "type": "string"
+    },
+    "address": {
+      "type": "object"
+    },
+    "geo": {
+      "type": "GeoPoint"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "delinquent": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "archived": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "accessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "userIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "userCredential",
+      "foreignKey": "userId"
+    },
+    "roles": {
+      "type": "hasMany",
+      "model": "Role",
+      "foreignKey": "principalId",
+      "through": "RoleMapping"
+    },
+    "reviews": {
+      "type": "hasMany",
+      "model": "PlaceReview",
+      "foreignKey": "pubisherId"
+    },
+    "places": {
+      "type": "hasMany",
+      "model": "Place",
+      "foreignKey": "pubisherId"
+    },
+    "creditCards": {
+      "type": "hasMany",
+      "model": "userCreditCard",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

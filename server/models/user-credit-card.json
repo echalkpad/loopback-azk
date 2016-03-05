@@ -1,0 +1,98 @@
+{
+  "name": "userCreditCard",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address_city": {
+      "type": "string"
+    },
+    "address_country": {
+      "type": "string"
+    },
+    "address_line1": {
+      "type": "string"
+    },
+    "address_line1_check": {
+      "type": "string"
+    },
+    "address_line2": {
+      "type": "string"
+    },
+    "address_state": {
+      "type": "string"
+    },
+    "address_zip": {
+      "type": "number"
+    },
+    "address_zip_check": {
+      "type": "number"
+    },
+    "brand": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "cvc_check": {
+      "type": "string"
+    },
+    "dynamic_last4": {
+      "type": "string"
+    },
+    "exp_month": {
+      "type": "string",
+      "required": true
+    },
+    "exp_year": {
+      "type": "string",
+      "required": true
+    },
+    "funding": {
+      "type": "string",
+      "required": true
+    },
+    "last4": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "stripeId": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "archived": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

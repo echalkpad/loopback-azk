@@ -2,5 +2,27 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mail": {
+    "name": "mail",
+    "connector": "mail"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "amazon",
+    "keyId": "AKIAJJGALOTCTOLUW4EQ",
+    "key": "ULCL+kBP+meHzMm56bKfEjs2Rp6FOPRyfpImBA5s"
+  },
+  "push": {
+    "name": "push",
+    "connector": "loopback-component-push",
+    "installation": "installation",
+    "notification": "notification",
+    "application": "application"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
   }
 }
